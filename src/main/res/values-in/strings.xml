@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_image_description">Gambar orientasi</string>
+    <string name="onboarding_skip">Lewati</string>
+    <string name="onboarding_next">Berikutnya</string>
+    <string name="onboarding_get_started">Mulai</string>
+</resources>

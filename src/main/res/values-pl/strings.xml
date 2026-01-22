@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="onboarding_image_description">Obraz wprowadzający</string>
+    <string name="onboarding_skip">Pomiń</string>
+    <string name="onboarding_next">Dalej</string>
+    <string name="onboarding_get_started">Rozpocznij</string>
+</resources>

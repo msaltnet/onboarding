@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="onboarding_image_description">Onboarding image</string>
-    <string name="onboarding_skip">건너뛰기</string>
-    <string name="onboarding_next">다음</string>
-    <string name="onboarding_get_started">시작하기</string>
+    <string name="onboarding_skip">Skip</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_get_started">Get Started</string>
 </resources>
