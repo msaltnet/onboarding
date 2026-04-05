@@ -51,6 +51,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/onboarding_skip"
+                android:textColor="?android:attr/textColorSecondary"
                 android:textSize="16sp" />
 
             <LinearLayout
