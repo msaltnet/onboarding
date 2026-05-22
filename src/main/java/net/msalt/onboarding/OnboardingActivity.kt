@@ -2,6 +2,7 @@ package net.msalt.onboarding
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
@@ -31,12 +32,22 @@ class OnboardingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityOnboardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        applyResponsiveOrientation()
 
         pages = getOnboardingPages()
 
         setupViewPager()
         setupIndicators()
         setupButtons()
+    }
+
+    private fun applyResponsiveOrientation() {
+        requestedOrientation =
+            if (resources.configuration.screenWidthDp < 600) {
+                ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+            } else {
+                ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
+            }
     }
 
     private fun getOnboardingPages(): List<OnboardingPage> {
