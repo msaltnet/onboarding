@@ -3,6 +3,7 @@ package net.msalt.onboarding
 import android.content.Context
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
@@ -27,6 +28,7 @@ class OnboardingActivity : AppCompatActivity() {
     private lateinit var binding: ActivityOnboardingBinding
     private lateinit var pages: List<OnboardingPage>
     private val indicators = mutableListOf<View>()
+    private var detailUrl: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,6 +37,7 @@ class OnboardingActivity : AppCompatActivity() {
         applyResponsiveOrientation()
 
         pages = getOnboardingPages()
+        detailUrl = intent.getStringExtra(EXTRA_DETAIL_URL)
 
         setupViewPager()
         setupIndicators()
@@ -115,6 +118,8 @@ class OnboardingActivity : AppCompatActivity() {
 
         binding.layoutNavigation.visibility = if (isLastPage) View.GONE else View.VISIBLE
         binding.buttonGetStarted.visibility = if (isLastPage) View.VISIBLE else View.GONE
+        binding.buttonWebsiteDetails.visibility =
+            if (isLastPage && !detailUrl.isNullOrBlank()) View.VISIBLE else View.GONE
     }
 
     private fun setupButtons() {
@@ -132,6 +137,14 @@ class OnboardingActivity : AppCompatActivity() {
         binding.buttonGetStarted.setOnClickListener {
             finishOnboarding()
         }
+
+        binding.buttonWebsiteDetails.setOnClickListener {
+            detailUrl?.takeIf(String::isNotBlank)?.let { url ->
+                runCatching {
+                    startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(url)))
+                }
+            }
+        }
     }
 
     private fun finishOnboarding() {
@@ -143,6 +156,7 @@ class OnboardingActivity : AppCompatActivity() {
         private const val EXTRA_IMAGE_RES = "extra_image_res"
         private const val EXTRA_TITLES = "extra_titles"
         private const val EXTRA_DESCRIPTIONS = "extra_descriptions"
+        private const val EXTRA_DETAIL_URL = "extra_detail_url"
 
         /**
          * OnboardingActivity를 시작합니다.
@@ -150,11 +164,12 @@ class OnboardingActivity : AppCompatActivity() {
          * @param context Context
          * @param pages 온보딩 페이지 리스트 (이미지와 텍스트를 app 모듈에서 주입)
          */
-        fun start(context: Context, pages: List<OnboardingPage>) {
+        fun start(context: Context, pages: List<OnboardingPage>, detailUrl: String? = null) {
             val intent = Intent(context, OnboardingActivity::class.java).apply {
                 putExtra(EXTRA_IMAGE_RES, pages.map { it.imageRes }.toIntArray())
                 putExtra(EXTRA_TITLES, pages.map { it.title }.toTypedArray())
                 putExtra(EXTRA_DESCRIPTIONS, pages.map { it.description }.toTypedArray())
+                putExtra(EXTRA_DETAIL_URL, detailUrl)
             }
             context.startActivity(intent)
         }
