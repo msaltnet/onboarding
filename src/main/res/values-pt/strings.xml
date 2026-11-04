@@ -4,4 +4,5 @@
     <string name="onboarding_skip">Pular</string>
     <string name="onboarding_next">Próximo</string>
     <string name="onboarding_get_started">Começar</string>
+    <string name="onboarding_website_details">Visitar o site</string>
 </resources>

@@ -4,4 +4,5 @@
     <string name="onboarding_skip">Пропустить</string>
     <string name="onboarding_next">Далее</string>
     <string name="onboarding_get_started">Начать</string>
+    <string name="onboarding_website_details">Перейти на сайт</string>
 </resources>
