@@ -4,4 +4,5 @@
     <string name="onboarding_skip">Pomiń</string>
     <string name="onboarding_next">Dalej</string>
     <string name="onboarding_get_started">Rozpocznij</string>
+    <string name="onboarding_website_details">Odwiedź stronę internetową</string>
 </resources>

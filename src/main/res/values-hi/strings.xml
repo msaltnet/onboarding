@@ -4,4 +4,5 @@
     <string name="onboarding_skip">छोड़ें</string>
     <string name="onboarding_next">अगला</string>
     <string name="onboarding_get_started">शुरू करें</string>
+    <string name="onboarding_website_details">वेबसाइट पर जाएँ</string>
 </resources>
